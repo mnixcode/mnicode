@@ -17,8 +17,9 @@ export default function Skills() {
             });
         }, { threshold: 0.2 });
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+        const currentRef = sectionRef.current;
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         // Mouse move effect for skill cards
@@ -38,7 +39,7 @@ export default function Skills() {
         document.addEventListener('mousemove', handleMouseMove);
 
         return () => {
-            if (sectionRef.current) observer.unobserve(sectionRef.current);
+            if (currentRef) observer.unobserve(currentRef);
             document.removeEventListener('mousemove', handleMouseMove);
         };
     }, []);

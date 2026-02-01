@@ -41,9 +41,10 @@ export default function Services() {
 
         tiltCards.forEach(card => attachListeners(card));
 
+        const currentCleanupRefs = cleanupRefs.current;
         return () => {
-            cleanupRefs.current.forEach(cleanup => cleanup());
-            cleanupRefs.current.clear();
+            currentCleanupRefs.forEach(cleanup => cleanup());
+            currentCleanupRefs.clear();
         };
     }, []);
 
