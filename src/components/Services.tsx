@@ -1,21 +1,12 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Services() {
 
+    const cleanupRefs = useRef<Map<HTMLElement, () => void>>(new Map());
+
     useEffect(() => {
         const tiltCards = document.querySelectorAll('.service-card') as NodeListOf<HTMLElement>;
-
-        const handleMouseMove = (e: MouseEvent) => {
-            // Logic for each card
-            tiltCards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-
-                // Only trigger tilt if mouse is near or over the card? The original script was global listener or card listener?
-                // Original: card.addEventListener('mousemove', ...)
-                // This is better done by attaching event listener to each card.
-            });
-        };
 
         const attachListeners = (card: HTMLElement) => {
             const handleMove = (e: MouseEvent) => {
@@ -41,19 +32,18 @@ export default function Services() {
             card.addEventListener('mousemove', handleMove);
             card.addEventListener('mouseleave', handleLeave);
 
-            // Store cleanup function on the element? Or just return a cleanup for all.
-            (card as any)._cleanup = () => {
+            const cleanup = () => {
                 card.removeEventListener('mousemove', handleMove);
                 card.removeEventListener('mouseleave', handleLeave);
             };
+            cleanupRefs.current.set(card, cleanup);
         };
 
         tiltCards.forEach(card => attachListeners(card));
 
         return () => {
-            tiltCards.forEach(card => {
-                if ((card as any)._cleanup) (card as any)._cleanup();
-            });
+            cleanupRefs.current.forEach(cleanup => cleanup());
+            cleanupRefs.current.clear();
         };
     }, []);
 

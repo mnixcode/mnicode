@@ -1,8 +1,7 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+
 import Link from "next/link";
-import { motion, useInView } from "framer-motion";
 
 export default function Hero() {
     const [text, setText] = useState("");
@@ -10,13 +9,12 @@ export default function Hero() {
     const [loopNum, setLoopNum] = useState(0);
     const [typingSpeed, setTypingSpeed] = useState(150);
 
-    const phrases = ['Full Stack Developer', 'Next.js Expert', 'UI/UX Designer', 'Founder @ Zenviq'];
-
     useEffect(() => {
-        const handleType = () => {
-            const i = loopNum % phrases.length;
-            const fullText = phrases[i];
+        const phrases = ['Full Stack Developer', 'Next.js Expert', 'UI/UX Designer', 'Founder @ Zenviq'];
+        const i = loopNum % phrases.length;
+        const fullText = phrases[i];
 
+        const handleType = () => {
             setText(isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1));
 
             if (isDeleting) {
@@ -36,7 +34,7 @@ export default function Hero() {
 
         const timer = setTimeout(handleType, typingSpeed);
         return () => clearTimeout(timer);
-    }, [text, isDeleting, loopNum, phrases, typingSpeed]);
+    }, [text, isDeleting, loopNum, typingSpeed]); // Removed phrases from dependency array
 
     // Converting 120, 100, 100 loops to useEffect seems inefficient for stats but okay for now.
     // Actually, I'll use a simple count up hook for stats.

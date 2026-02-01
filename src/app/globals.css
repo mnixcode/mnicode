@@ -9,7 +9,8 @@
     --primary-light: #818cf8;
     --secondary-color: #ec4899;
     --accent-color: #f43f5e;
-    --dark-bg: #f1f5f9; /* Light Mode Default as per line 1886 */
+    --dark-bg: #f1f5f9;
+    /* Light Mode Default as per line 1886 */
     --darker-bg: #ffffff;
     --card-bg: rgba(255, 255, 255, 0.9);
     --text-primary: #0f172a;
@@ -21,12 +22,13 @@
     --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
     --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    
+
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --radius-sm: 0.25rem;
-    --radius-md: 0.5rem; /* Copied from assumption, was missing in first chunk but used later */
+    --radius-md: 0.5rem;
+    /* Copied from assumption, was missing in first chunk but used later */
     --radius-lg: 0.75rem;
-    
+
     --font-heading: var(--font-space-grotesk), sans-serif;
     --font-body: var(--font-inter), sans-serif;
 
@@ -126,7 +128,12 @@ body:hover .cursor-follower {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-heading);
     font-weight: 700;
     line-height: 1.2;
@@ -579,41 +586,131 @@ section {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.icon-1 { top: 0; left: 10%; color: #E34F26; }
-.icon-2 { top: 20%; right: 0; color: #61DAFB; animation-delay: 0.5s; }
-.icon-3 { bottom: 20%; right: 10%; color: #4285F4; animation-delay: 1s; }
-.icon-4 { bottom: 0; left: 20%; color: #1877F2; animation-delay: 1.5s; }
-.icon-5 { top: 40%; left: -10%; color: #34A853; animation-delay: 2s; }
-.icon-6 { top: -10%; right: 30%; color: #F7DF1E; animation-delay: 2.5s; }
+.icon-1 {
+    top: 0;
+    left: 10%;
+    color: #E34F26;
+}
+
+.icon-2 {
+    top: 20%;
+    right: 0;
+    color: #61DAFB;
+    animation-delay: 0.5s;
+}
+
+.icon-3 {
+    bottom: 20%;
+    right: 10%;
+    color: #4285F4;
+    animation-delay: 1s;
+}
+
+.icon-4 {
+    bottom: 0;
+    left: 20%;
+    color: #1877F2;
+    animation-delay: 1.5s;
+}
+
+.icon-5 {
+    top: 40%;
+    left: -10%;
+    color: #34A853;
+    animation-delay: 2s;
+}
+
+.icon-6 {
+    top: -10%;
+    right: 30%;
+    color: #F7DF1E;
+    animation-delay: 2.5s;
+}
 
 /* Animations */
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 @keyframes pulse {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
 }
 
 @keyframes spin {
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 @keyframes spin-reverse {
-    to { transform: translate(-50%, -50%) rotate(-360deg); }
+    to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
 }
 
 @keyframes float-icon {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
 @keyframes slideInUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.cursor {
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+    font-weight: 100;
+    color: var(--primary-color);
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 /* About Section */
@@ -1517,6 +1614,7 @@ section {
 }
 
 @media (max-width: 768px) {
+
     .nav-links,
     .nav-cta {
         display: none;
@@ -1555,7 +1653,7 @@ section {
         width: 240px;
         height: 240px;
     }
-    
+
     .portfolio-grid {
         grid-template-columns: 1fr;
     }

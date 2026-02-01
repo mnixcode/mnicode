@@ -21,19 +21,23 @@ export const metadata = {
     keywords: "Web Developer, SEO Expert, Digital Marketing, PPC, Google Ads, Meta Ads, Email Marketing, WhatsApp Marketing",
 };
 
+import { Providers } from "./providers";
+
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+        <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
             <body className="antialiased">
-                <CursorFollower />
-                <ParticlesBackground />
-                <Navbar />
-                <div id="particles-container"></div>
-                {children}
+                <Providers>
+                    <CursorFollower />
+                    <ParticlesBackground />
+                    <Navbar />
+                    <div id="particles-container"></div>
+                    {children}
+                </Providers>
             </body>
         </html>
     );
